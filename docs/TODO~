@@ -1,0 +1,13 @@
+-from_rwops()'s for HGE_{image,sprite,etc}_t
+-functions to apply a function to all vertexs in a HGE_distort
+-mesh overlay for HGE_distorted
+-Pausable timers, incorporate into HGE_cine_t
+-make data types have interal allocators that can be switched? either malloc or rc'ed?
+-make *_init() return an error code in case it fails
+-HGE_gc_* garbage collection?
+-Create a HGE_postoffice_t... no longer global. ?? Mutex it...
+-HGE_anim_load with a list of char* and SDL_Rect*
+
+-int   HGE_hash_t::foreach_remove()
+-int   HGE_hash_t::foreach_steal()
+

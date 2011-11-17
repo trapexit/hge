@@ -1,0 +1,29 @@
+# <pkg_name> [x] [y] [scale] [rotation] [h_flip] [v_flip]
+[objects]: images
+BUDDY  10  10  1.0 0.0 0 0
+GUIL  100 100 45.0 0.0 0 0
+
+# <pkg_name> [x] [y] [scale] [rotataion] [h_flip] [v_flip]
+#[objects]: anim
+
+# <pkg_name>
+#[objects]: audio
+
+# any field not to be set... place a '-' in it's place
+# <ev_name> <ev_type> <x> <y> <scale> <rotation> <h_flip> <v_flip>
+[events]: image
+buddy_set        SET 50 50 - -   - -
+buddy_rotate_inc INC -  -  - 1.0 - -
+
+# <ev_name> <audio_name> <ev_type>
+#[events]: audio
+
+# <ev_name> <cine_ev_type>
+[events]: cine
+DIE END_EVENT_LOOP
+
+# <time_ms> <ev_name> <obj_name>
+[triggers]: time
+1000 buddy_set        BUDDY
+5000 buddy_rotate_inc BUDDY
+

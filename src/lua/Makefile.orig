@@ -1,0 +1,32 @@
+VER = $(shell svn info | grep Revision | cut -f 2 -d ' ')
+DEGREES = -DUSE_DEGREES
+NUMBER = -DLUA_USER_H='"luser_number.h"' -DUSE_FLOAT
+SDL_CFLAGS = $(shell sdl-config --cflags)
+OPTS = -O0
+
+CFLAGS = -g -Wall ${OPTS} -I. -I../../include $(DEGREES) $(NUMBER) $(SDL_CFLAGS) -fpic
+SRCS = $(shell echo *.c)
+OBJS = ${SRCS:.c=.o}
+
+all: libHGElua.a libHGElua.so headers
+
+.c.o:
+	${CC} ${CFLAGS} -o $@ -c $<
+
+libHGElua.so: ${OBJS}
+	${CC} -shared -Wl,-soname,libHGElua.so.1 -o libHGElua.so.1.${VER} ${OBJS}
+
+libHGElua.a: ${OBJS}
+	${AR} ${ARFLAGS} $@ ${OBJS}
+	$(AR) -s $@
+
+headers:
+	cp lua.h lualib.h lauxlib.h lua_hge.h lua_sdl.h lua_gl.h ../../include
+	sh create_hgelua_h.sh
+	mv HGElua.h ../../include
+
+clean:
+	rm -f ${OBJS} *~ *.{a,so*} Makefile.bak
+
+depend:
+	makedepend -Y -- ${CFLAGS} -- ${SRCS}

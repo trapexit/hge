@@ -1,0 +1,27 @@
+TODO:
+
+1. HGE_parallax_t
+2. trigger system
+
+x_t = x_0 + t*v_0 + a/2*t^2
+v_t = v_0 + a*t
+
+x_0 is the current position
+v_0 is the current valocity
+a is the acceleration
+t is the change in time
+x_t is the new position
+v_t is the new valocity
+
+HGE like particle emitter:
+Emitter variables:
+ 0. Emitter lifetime
+ 1. Particle count
+ 2. min particle life
+ 3. max particle life
+ 4. direction of emittion
+ 5. spread
+ 6,7   X,Y min/max
+ 8,9   VX,VY min/max
+ 10,11 AX,AY min/max
+ 

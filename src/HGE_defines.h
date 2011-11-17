@@ -1,0 +1,150 @@
+#ifndef _HGE_DEFINES_H_
+#define _HGE_DEFINES_H_
+
+#define HGE_TRUE         SDL_TRUE
+#define HGE_FALSE        SDL_FALSE
+#define HGE_SUCCEEDED    0
+#define HGE_FAILED       1
+
+#if SDL_BYTEORDER == SDL_LIL_ENDIAN
+#  define HGE_UNSIGNED_SHORT_4_4_4_4      GL_UNSIGNED_SHORT_4_4_4_4_REV
+#  define HGE_UNSIGNED_SHORT_4_4_4_4_REV  GL_UNSIGNED_SHORT_4_4_4_4
+#  define HGE_UNSIGNED_SHORT_5_5_5_1      GL_UNSIGNED_SHORT_1_5_5_5_REV
+#  define HGE_UNSIGNED_SHORT_1_5_5_5_REV  GL_UNSIGNED_SHORT_5_5_5_1
+#  define HGE_UNSIGNED_SHORT_5_6_5        GL_UNSIGNED_SHORT_5_6_5_REV
+#  define HGE_UNSIGNED_SHORT_5_6_5_REV    GL_UNSIGNED_SHORT_5_6_5
+#  define HGE_UNSIGNED_INT_8_8_8_8        GL_UNSIGNED_INT_8_8_8_8_REV
+#  define HGE_UNSIGNED_INT_8_8_8_8_REV    GL_UNSIGNED_INT_8_8_8_8
+#  define HGE_UNSIGNED_INT_10_10_10_2     GL_UNSIGNED_INT_2_10_10_10_REV
+#  define HGE_UNSIGNED_INT_2_10_10_10_REV GL_UNSIGNED_INT_10_10_10_2
+#  define HGE_RMASK_4_4_4_4        0x000F
+#  define HGE_GMASK_4_4_4_4        0x00F0
+#  define HGE_BMASK_4_4_4_4        0x0F00
+#  define HGE_AMASK_4_4_4_4        0xF000
+#  define HGE_RMASK_4_4_4_4_REV    0xF000
+#  define HGE_GMASK_4_4_4_4_REV    0x0F00
+#  define HGE_BMASK_4_4_4_4_REV    0x00F0
+#  define HGE_AMASK_4_4_4_4_REV    0x000F
+#  define HGE_RMASK_5_5_5_1        0x001F
+#  define HGE_GMASK_5_5_5_1        0x01E0
+#  define HGE_BMASK_5_5_5_1        0x7E00
+#  define HGE_AMASK_5_5_5_1        0x8000
+#  define HGE_RMASK_1_5_5_5_REV    0xF800
+#  define HGE_GMASK_1_5_5_5_REV    0x07C0
+#  define HGE_BMASK_1_5_5_5_REV    0x003E
+#  define HGE_AMASK_1_5_5_5_REV    0x0001
+#  define HGE_RMASK_5_6_5          0x001F
+#  define HGE_GMASK_5_6_5          0x07E0
+#  define HGE_BMASK_5_6_5          0xF800
+#  define HGE_AMASK_5_6_5          0x0000
+#  define HGE_RMASK_5_6_5_REV      0xF800
+#  define HGE_GMASK_5_6_5_REV      0x07E0
+#  define HGE_BMASK_5_6_5_REV      0x001F
+#  define HGE_AMASK_5_6_5_REV      0x0000
+#  define HGE_RMASK_8_8_8_8        0x000000FF
+#  define HGE_GMASK_8_8_8_8        0x0000FF00
+#  define HGE_BMASK_8_8_8_8        0x00FF0000
+#  define HGE_AMASK_8_8_8_8        0xFF000000
+#  define HGE_RMASK_8_8_8_8_REV    0xFF000000
+#  define HGE_GMASK_8_8_8_8_REV    0x00FF0000
+#  define HGE_BMASK_8_8_8_8_REV    0x0000FF00
+#  define HGE_AMASK_8_8_8_8_REV    0x000000FF
+#  define HGE_RMASK_10_10_10_2     0x000003FF
+#  define HGE_GMASK_10_10_10_2     0x000FFC00
+#  define HGE_BMASK_10_10_10_2     0x3FF00000
+#  define HGE_AMASK_10_10_10_2     0xC0000000
+#  define HGE_RMASK_2_10_10_10_REV 0xFFC00000
+#  define HGE_GMASK_2_10_10_10_REV 0x003FF000
+#  define HGE_BMASK_2_10_10_10_REV 0x00000FFC
+#  define HGE_AMASK_2_10_10_10_REV 0x00000003
+#else /* SDL_BYTEORDER == SDL_BIG_ENDIAN */
+#  define HGE_UNSIGNED_SHORT_4_4_4_4      GL_UNSIGNED_SHORT_4_4_4_4
+#  define HGE_UNSIGNED_SHORT_4_4_4_4_REV  GL_UNSIGNED_SHORT_4_4_4_4_REV
+#  define HGE_UNSIGNED_SHORT_5_5_5_1      GL_UNSIGNED_SHORT_5_5_5_1
+#  define HGE_UNSIGNED_SHORT_1_5_5_5_REV  GL_UNSIGNED_SHORT_1_5_5_5_REV
+#  define HGE_UNSIGNED_SHORT_5_6_5        GL_UNSIGNED_SHORT_5_6_5
+#  define HGE_UNSIGNED_SHORT_5_6_5_REV    GL_UNSIGNED_SHORT_5_6_5_REV
+#  define HGE_UNSIGNED_INT_8_8_8_8        GL_UNSIGNED_INT_8_8_8_8
+#  define HGE_UNSIGNED_INT_8_8_8_8_REV    GL_UNSIGNED_INT_8_8_8_8_REV
+#  define HGE_UNSIGNED_INT_10_10_10_2     GL_UNSIGNED_INT_10_10_10_2
+#  define HGE_UNSIGNED_INT_2_10_10_10_REV GL_UNSIGNED_INT_2_10_10_10_REV
+#  define HGE_RMASK_4_4_4_4        0xF000
+#  define HGE_GMASK_4_4_4_4        0x0F00
+#  define HGE_BMASK_4_4_4_4        0x00F0
+#  define HGE_AMASK_4_4_4_4        0x000F
+#  define HGE_RMASK_4_4_4_4_REV    0x000F
+#  define HGE_GMASK_4_4_4_4_REV    0x00F0
+#  define HGE_BMASK_4_4_4_4_REV    0x0F00
+#  define HGE_AMASK_4_4_4_4_REV    0xF000
+#  define HGE_RMASK_5_5_5_1        0xF800
+#  define HGE_GMASK_5_5_5_1        0x07C0
+#  define HGE_BMASK_5_5_5_1        0x003E
+#  define HGE_AMASK_5_5_5_1        0x0001
+#  define HGE_RMASK_1_5_5_5_REV    0x001F
+#  define HGE_GMASK_1_5_5_5_REV    0x01E0
+#  define HGE_BMASK_1_5_5_5_REV    0x7E00
+#  define HGE_AMASK_1_5_5_5_REV    0x8000
+#  define HGE_RMASK_5_6_5          0xF800
+#  define HGE_GMASK_5_6_5          0x07E0
+#  define HGE_BMASK_5_6_5          0x001F
+#  define HGE_AMASK_5_6_5          0x0000
+#  define HGE_RMASK_5_6_5_REV      0x001F
+#  define HGE_GMASK_5_6_5_REV      0x07E0
+#  define HGE_BMASK_5_6_5_REV      0xF800
+#  define HGE_AMASK_5_6_5_REV      0x0000
+#  define HGE_RMASK_8_8_8_8        0xFF000000
+#  define HGE_GMASK_8_8_8_8        0x00FF0000
+#  define HGE_BMASK_8_8_8_8        0x0000FF00
+#  define HGE_AMASK_8_8_8_8        0x000000FF
+#  define HGE_RMASK_8_8_8_8_REV    0x000000FF
+#  define HGE_GMASK_8_8_8_8_REV    0x0000FF00
+#  define HGE_BMASK_8_8_8_8_REV    0x00FF0000
+#  define HGE_AMASK_8_8_8_8_REV    0xFF000000
+#  define HGE_RMASK_10_10_10_2     0xFFC00000
+#  define HGE_GMASK_10_10_10_2     0x003FF000
+#  define HGE_BMASK_10_10_10_2     0x00000FFC
+#  define HGE_AMASK_10_10_10_2     0x00000003
+#  define HGE_RMASK_2_10_10_10_REV 0x00000CFF
+#  define HGE_GMASK_2_10_10_10_REV 0x000FF300
+#  define HGE_BMASK_2_10_10_10_REV 0xCFF00000
+#  define HGE_AMASK_2_10_10_10_REV 0x30000000
+#endif /* SDL_BYTEORDER */
+
+#define GL_TEXTURE_RECTANGLE_ARB              0x84F5
+#define GL_TEXTURE_RECTANGLE_NV               0x84F5
+#define GL_TEXTURE_RECTANGLE_EXT              0x84F5
+#define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB     0x84F8
+#define GL_MAX_RECTANGLE_TEXTURE_SIZE_NV      0x84F8
+#define GL_MAX_RECTANGLE_TEXTURE_SIZE_EXT     0x84F8
+#define GL_COMPRESSED_ALPHA                   0x84E9
+#define GL_COMPRESSED_ALPHA_ARB               0x84E9
+#define GL_COMPRESSED_LUMINANCE               0x84EA
+#define GL_COMPRESSED_LUMINANCE_ARB           0x84EA
+#define GL_COMPRESSED_LUMINANCE_ALPHA         0x84EB
+#define GL_COMPRESSED_LUMINANCE_ALPHA_ARB     0x84EB
+#define GL_COMPRESSED_INTENSITY               0x84EC
+#define GL_COMPRESSED_INTENSITY_ARB           0x84EC
+#define GL_COMPRESSED_RGB                     0x84ED
+#define GL_COMPRESSED_RGB_ARB                 0x84ED
+#define GL_COMPRESSED_RGBA                    0x84EE
+#define GL_COMPRESSED_RGBA_ARB                0x84EE
+#define GL_COMPRESSED_RGB_S3TC_DXT1_EXT       0x83F0
+#define GL_COMPRESSED_RGBA_S3TC_DXT1_EXT      0x83F1
+#define GL_COMPRESSED_RGBA_S3TC_DXT3_EXT      0x83F2
+#define GL_COMPRESSED_RGBA_S3TC_DXT5_EXT      0x83F3
+#define GL_COMPRESSED_RGB_FXT1_3DFX           0x86B0
+#define GL_COMPRESSED_RGBA_FXT1_3DFX          0x86B1
+#define GL_TEXTURE_COMPRESSION_HINT           0x84EF
+#define GL_TEXTURE_COMPRESSION_HINT_ARB       0x84EF
+#define GL_TEXTURE_COMPRESSED_IMAGE_SIZE      0x86A0
+#define GL_TEXTURE_COMPRESSED_IMAGE_SIZE_ARB  0x86A0
+#define GL_TEXTURE_COMPRESSED                 0x86A1
+#define GL_TEXTURE_COMPRESSED_ARB             0x86A1
+#define GL_NUM_COMPRESSED_TEXTURE_FORMATS     0x86A2
+#define GL_NUM_COMPRESSED_TEXTURE_FORMATS_ARB 0x86A2
+#define GL_COMPRESSED_TEXTURE_FORMATS         0x86A3
+#define GL_COMPRESSED_TEXTURE_FORMATS_ARB     0x86A3
+
+#define CLAMP_NUMBER(x,l,h) (((x) > (h)) ? (h) : (((x) < (l)) ? (l) : (x)))
+
+#endif

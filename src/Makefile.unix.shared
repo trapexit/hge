@@ -1,0 +1,25 @@
+SDL_CFLAGS = $(shell sdl-config --cflags)
+CFLAGS = -g -Wall $(SDL_CFLAGS) -O0 -fpic
+SRCS = $(shell echo HGE*.c)
+OBJS = ${SRCS:.c=.o}
+VER = $(shell svn info | grep Revision | cut -f 2 -d ' ')
+
+
+all: libHGE.so headers
+
+.c.o:
+	${CC} ${CFLAGS} -o $@ -c $<
+
+libHGE.so: ${OBJS}
+	${CC} -shared -Wl,-soname,libHGE.so.1 -o libHGE.so.1.${VER} ${OBJS}
+
+headers:
+	sh create_hge_h.sh
+	mv HGE.h ../include
+	cp *.h   ../include
+
+clean:
+	rm -f ${OBJS} *~ libHGE.so* Makefile.bak
+
+depend:
+	makedepend -Y -- ${CFLAGS} -- ${SRCS}
